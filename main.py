@@ -11,6 +11,7 @@ class grille:
         ((0,400),(600,400)),]
 
         self.grille = [[None for x in range(0,3)] for y in range(0,3)]
+        
         self.counter_on = False
 
     def afficher(self):
@@ -67,16 +68,19 @@ class game:
                     position_x , position_y = position[0]//200 , position[1]//200
                     print(position_x,position_y)
 
-                    self.grille.valeur(position_x,position_y,'X')
+                    # self.grille.valeur(position_x,position_y,'X')
 
                     if self.counter %2 ==0 :
                        self.grille.valeur(position_x,position_y,self.player_X) 
+
                     else:
                         self.grille.valeur(position_x,position_y,self.player_O) 
                     
-                    if self.grille.counter_on == True:
-                        self.counter +=1    
+                    if self.grille.counter_on: 
+                        self.counter += 1    
+                        print(self.counter)                 
                         self.grille.counter_on = False
+                             
 
                 self.grille.print_grille()    
 
