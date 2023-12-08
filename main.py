@@ -1,10 +1,6 @@
 import pygame
 import sys
 import time
-from ia import ia 
-import random
-
-    
 
 class grille:
 
@@ -51,9 +47,6 @@ class grille:
 
         self.grille[line][column] =valeur
 
-
-
-
 class game:
 
     def __init__(self):
@@ -65,7 +58,6 @@ class game:
         self.player_O = "O"
         self.counter = 0
         self.start_screen = True
-
 
     def principal_function(self):
 
@@ -88,8 +80,7 @@ class game:
                 self.message('moyenne', 'Pour jouer ,tapez sur espace ', [200, 270, 200, 50],(0, 0, 0))
                 self.message('moyenne', f'Pour revenir a cette ecran , appuyer sur Echap ', [100, 350, 200, 50],(0, 0, 0))
                 pygame.display.flip()
-
-                    
+                   
             for event in pygame.event.get():
                 
 
@@ -99,9 +90,7 @@ class game:
                     
                     position = pygame.mouse.get_pos()
                     position_x , position_y = position[0]//200 , position[1]//200
-                    print(position_x,position_y)
-                    
-                    
+                    print(position_x,position_y)                  
 
                     if self.counter %2 ==0 :
                         self.grille.valeur(position_x,position_y,self.player_X) 
@@ -123,18 +112,12 @@ class game:
                 
                 self.grille.print_grille()    
 
-
                 liste_X=[]
                 liste_O =[]
                 liste_lines_X =[]
                 liste_columns_X =[]
                 liste_lines_O =[]
                 liste_columns_O =[]    
-
-
-                
-
-
                 
                 self.screen.fill((240,240,240))
                 for line in range(0,len(self.grille.grille)):
@@ -163,8 +146,7 @@ class game:
                     if liste_lines_X == liste_columns_X or liste_lines_X == liste_columns_X[::-1]:
                        self.message('grande', 'X a gagné !', [215, 300, 200, 50], (0, 0, 0)) 
                        self.message('grande', 'Appuyer sur Espace pour recommencer', [10, 330, 200, 50], (0, 0, 0)) 
-                    
-                
+                                   
                 if len(liste_O) >= 3 :
                     for (line,column) in liste_O:
                         liste_lines_O.append(line)
@@ -182,10 +164,8 @@ class game:
                 if self.counter %2 == 0:
                     self.message('grande', 'Au tour de X', [200, 150, 200, 50], (0, 0, 0))
                 else:
-                    self.message('grande', 'Au tour de O', [200, 150, 200, 50], (0, 0, 0)) 
-                   
-
-
+                    self.message('grande', 'Au tour de O', [200, 150, 200, 50], (0, 0, 0))           
+ 
                 self.grille.afficher()
                 pygame.display.flip()
                 
@@ -209,9 +189,6 @@ class game:
         message = font.render(message,False,color)
 
         self.screen.blit(message,message_rectangle)    
-
-    
-
 
 if __name__=="__main__":
     pygame.init()
